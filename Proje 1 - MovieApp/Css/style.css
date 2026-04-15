@@ -1,0 +1,410 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto:wght@400;700&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css");
+@import url("buttons.css");
+@import url("base.css");
+
+main {
+  min-height: calc(100vh - 138px);
+}
+
+/* Ana başlık kısmı */
+.main-header {
+  position: sticky; /* Sayfa kaydırıldığında sabit kalmasını sağlıyoruz */
+  top: 0; /* Üstten sıfır boşluk bırakıyoruz */
+  z-index: 1000; /* Diğer öğelerin üstünde görünmesini sağlıyoruz */
+  background-color: #fc997c; /* Arka plan rengini belirliyoruz */
+  padding: 0.8rem 1.6rem; /* İç boşluk ekliyoruz */
+}
+
+/* Logo kısmı */
+.main-header__logo {
+  color: #fff; /* Logo metnini beyaz yapıyoruz */
+  text-decoration: none; /* Alt çizgiyi kaldırıyoruz */
+  font-weight: bold; /* Metni kalın yapıyoruz */
+  font-size: 21px; /* Yazı boyutunu 21px olarak ayarlıyoruz */
+}
+
+/* Navigasyon kısmı */
+.main-nav {
+  display: inline-block; /* Navigasyon öğelerini yatayda sıralıyoruz */
+  width: calc(
+    100% - 10.2rem
+  ); /* Genişliği hesaplıyoruz (logo ve padding'in genişliği çıkarılır) */
+  text-align: right; /* Yazıyı sağa hizalıyoruz */
+  font-family: "Roboto", sans-serif; /* Yazı tipini Roboto olarak belirliyoruz */
+}
+
+/* Menü öğeleri (liste) */
+.main-nav__items {
+  margin: 0; /* Liste dışı boşluğu sıfırlıyoruz */
+  padding: 0; /* Liste içi boşluğu sıfırlıyoruz */
+  list-style: none; /* Liste işaretçilerini (nokta) kaldırıyoruz */
+}
+
+/* Menü öğelerinin her biri */
+.main-nav__item {
+  display: inline-block; /* Menü öğelerini yatayda sıralıyoruz */
+  margin: 0 1rem; /* Menü öğeleri arasına boşluk ekliyoruz */
+}
+
+.main-nav__item:last-child {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .main-nav__item {
+    display: none;
+  }
+
+  .main-nav__item:last-child {
+    display: block;
+  }
+
+  .responsive .main-nav__item {
+    display: block;
+    text-align: left;
+    margin: 1rem 0;
+  }
+
+  .responsive .main-nav__item:last-child {
+    position: absolute;
+    right: 4rem;
+    top: 0.6rem;
+  }
+
+  .responsive .main-nav {
+    display: block;
+  }
+}
+
+/* Menü öğelerindeki linkler */
+.main-nav__item a {
+  cursor: pointer; /* Üzerine gelindiğinde imleci el yapıyoruz */
+
+  text-decoration: none; /* Linklerin altını çizmeden yazıyoruz */
+  color: #fff; /* Linklerin rengini beyaz yapıyoruz */
+}
+
+/* Link üzerine gelindiğinde renk değişimi */
+.main-nav__item a:hover,
+.main-nav__item:hover::before {
+  color: #2e4c6d; /* Linkin rengini değiştirmek ve noktanın rengini değiştirmek için */
+}
+
+/* Linke tıklanırken (aktif durumda) renk değişimi */
+.main-nav__item:active::before,
+.main-nav__item a:active {
+  color: rgb(0, 208, 208); /* Aktif durumda renk aqua olur */
+}
+
+/* Showcases bölümünün stili */
+#showcase {
+  background: linear-gradient(
+      to bottom,
+      rgb(192 96 69 / 20%),
+      rgb(20 20 57 / 20%)
+    ),
+    url(../img/image1.jpg); /* Arka plan görseli ekliyoruz */
+  background-position: center; /* Görseli ortalıyoruz */
+  background-size: cover; /* Görseli kapsayacak şekilde boyutlandırıyoruz */
+  background-attachment: fixed; /* Görselin sabit kalmasını sağlıyoruz */
+  height: 80vh; /* Yüksekliği %80 yapıyoruz */
+  width: 100%; /* Genişliği %100 yapıyoruz */
+  position: relative; /* Pozisyonu göreceli yapıyoruz */
+}
+
+#showcase .content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Ortalıyoruz */
+  color: white;
+  background: rgba(59, 8, 25, 0.4);
+  padding: 2rem;
+  width: 60%;
+  border-radius: 1rem;
+}
+#showcase h1 {
+  color: #252933;
+  font-size: 3rem; /* Yazı boyutunu 50px yapıyoruz */
+  position: absolute; /* Pozisyonu mutlak yapıyoruz */
+  top: 50%; /* Üstten %50 boşluk bırakıyoruz */
+  left: 50%; /* Soldan %50 boşluk bırakıyoruz */
+  transform: translate(-50%, -50%); /* Ortalıyoruz */
+}
+
+@media (min-width: 576px) {
+  #showcase {
+    height: 50vh;
+  }
+}
+
+@media (min-width: 768px) {
+  #showcase {
+    height: 60vh;
+  }
+}
+
+@media (min-width: 992px) {
+  #showcase {
+    height: 70vh;
+  }
+}
+
+/* How it works kısmı */
+#how-it-works {
+  padding: 1rem; /* İç boşluk ekliyoruz */
+  text-align: center; /* Yazıyı ortalıyoruz */
+}
+
+#how-it-works h2 {
+  color: #3e4555; /* Başlık rengini belirliyoruz */
+  font-size: 3rem; /* Yazı boyutunu 30px yapıyoruz */
+}
+
+/* Icon kutusunun başlıkları */
+.icon-box h3 {
+  color: #3e4555; /* Başlık rengini belirliyoruz */
+  font-size: 2.6rem; /* Yazı boyutunu 26px yapıyoruz */
+}
+
+/* Iconların rengini belirliyoruz */
+.icon-box i {
+  color: #fc997c; /* Icon rengini şeftali tonunda yapıyoruz */
+}
+
+/* Features sol kısmı */
+.features__left {
+  background: url("../img/image2.jpg"); /* Arka plan görseli ekliyoruz */
+  background-size: cover;
+  background-position: top center; /* Görseli üst ve ortada hizalıyoruz */
+}
+
+/* Features sağ kısmı */
+.features__right {
+  background-color: #edf5f7; /* Arka plan rengini açıyoruz */
+  padding: 0.5rem 2rem 0.5rem 2rem; /* İç boşluk ekliyoruz */
+  vertical-align: top; /* Üst hizalama sağlıyoruz */
+}
+
+.features__left,
+.features__right {
+  height: 35rem;
+}
+
+.features__right h3 {
+  font-size: 3rem; /* Yazı boyutunu 30px yapıyoruz */
+}
+
+.section-title {
+  text-align: center; /* Yazıyı ortalıyoruz */
+  font-size: 2.5rem; /* Yazı boyutunu 30px yapıyoruz */
+  margin: 2rem 0; /* Üst ve alt boşluk ekliyoruz */
+}
+
+.plan {
+  text-align: center;
+  padding: 0.5rem; /* İç boşluk ekliyoruz */
+  width: 33.3%; /* Genişliği %32 yapıyoruz */
+  float: left; /* Soldan hizalıyoruz */
+}
+
+@media (max-width: 760px) {
+  .plan {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+}
+
+.plan__badge {
+  background-color: #fff;
+  color: #fc997c;
+  padding: 0.8rem;
+  border-radius: 1rem;
+}
+
+.recommended_plan {
+  color: #fff;
+  background-color: #396eb0 !important; /* Arka plan rengini mavi yapıyoruz */
+}
+
+.inner-plan {
+  background: #edf5f7; /* Arka plan rengini açıyoruz */
+  padding: 2.5rem 1rem;
+  border-radius: 5px;
+  box-shadow: 0px 7px 29px 5px rgba(100, 100, 111, 0.2); /* Gölge efekti ekliyoruz */
+  transition: box-shadow 0.6s;
+}
+
+.inner-plan:hover {
+  box-shadow: 0px 7px 29px 5px rgba(100, 100, 111, 0.5); /* Hover efekti için gölgeyi artırıyoruz */
+}
+
+.plan__features {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+  .plan--featured {
+    position: relative;
+    top: -20px;
+  }
+}
+
+.plan__features li {
+  margin: 6px 0;
+}
+
+#backtotop {
+  position: fixed; /* Sabit pozisyon */
+  bottom: 1rem; /* Alt boşluk ekliyoruz */
+  right: 1rem; /* Sağ boşluk ekliyoruz */
+}
+
+#backtotop i {
+  font-size: 4.5rem;
+  color: #fc997c;
+  background-color: white;
+  border-radius: 50%; /* Daire şeklinde yapıyoruz */
+  box-shadow: 0px 7px 29px 5px rgba(100, 100, 111, 0.2); /* Gölge efekti ekliyoruz */
+  transition-duration: 0.8s; /* Geçiş süresi */
+}
+#backtotop i:hover {
+  color: #fff;
+  background-color: #fc997c;
+  box-shadow: 0px 7px 29px 5px rgba(100, 100, 111, 0.3);
+}
+.counter {
+  background-image: linear-gradient(
+    to bottom,
+    #fc997c 0%,
+    #fc8b69 100%
+  ); /* Arka plan rengini belirliyoruz */
+  padding: 50px; /* İç boşluk ekliyoruz */
+  text-align: center; /* Yazıyı ortalıyoruz */
+}
+
+.counter__item {
+  font-weight: 500;
+  color: #fff; /* Yazı rengini beyaz yapıyoruz */
+  font-size: 30px; /* Yazı boyutunu 30px yapıyoruz */
+}
+
+.counter h3 {
+  color: #fff; /* Yazı rengini beyaz yapıyoruz */
+  margin: 0; /* Dış boşluğu sıfırlıyoruz */
+}
+
+.card {
+  margin-top: 10px;
+  background-color: #fff; /* Arka plan rengini beyaz yapıyoruz */
+  border-radius: 10px; /* Kenarları yuvarlıyoruz */
+  cursor: pointer; /* Üzerine gelindiğinde imleci el yapıyoruz */
+  box-shadow: 10px 10px 40px rgba(52, 58, 64, 0.2); /* Gölge efekti ekliyoruz */
+  /* position: relative;
+  top: 0; */
+  transition: all 0.6s; /* Geçiş süresi */
+}
+
+.card:hover {
+  /* top: -15px; Hover efekti için yukarı kaydırıyoruz */
+  transform: translateY(-15px); /* Hover efekti için yukarı kaydırıyoruz */
+}
+
+.card-container {
+  padding: 10px;
+}
+
+.card__image {
+  max-height: 611.91px;
+}
+
+.card-body {
+  padding: 30px; /* İç boşluk ekliyoruz */
+}
+
+footer {
+  margin-top: 25px;
+  background-color: #2e4c6d; /* Arka plan rengini koyu mavi yapıyoruz */
+  padding: 1px 25px 25px 25px; /* İç boşluk ekliyoruz */
+}
+
+footer a {
+  color: #fff; /* Link rengini beyaz yapıyoruz */
+  text-decoration: none; /* Alt çizgiyi kaldırıyoruz */
+  font-size: 18px; /* Yazı boyutunu 18px yapıyoruz */
+}
+
+footer ul {
+  padding: 0; /* İç boşluğu sıfırlıyoruz */
+  margin: 0; /* Dış boşluğu sıfırlıyoruz */
+}
+
+footer ul li {
+  list-style-type: none; /* Liste işaretçilerini kaldırıyoruz */
+  display: inline-block; /* Yatayda sıralıyoruz */
+  margin-right: 10px; /* Sağ boşluk ekliyoruz */
+}
+
+#social-links {
+  text-align: center;
+}
+footer .fab {
+  padding: 10px;
+  border-radius: 15px;
+}
+
+footer .fab:hover {
+  opacity: 0.5; /* Hover efekti için opaklığı azaltıyoruz */
+}
+
+.fa-facebook {
+  background-color: #3b5998; /* Facebook rengi */
+  color: #fff;
+}
+.fa-twitter {
+  background-color: #55acee; /* Twitter rengi */
+  color: #fff;
+}
+.fa-instagram {
+  background: radial-gradient(
+      circle farthest-corner at 35% 90%,
+      #fec564,
+      transparent 50%
+    ),
+    radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%),
+    radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%),
+    radial-gradient(
+      ellipse farthest-corner at 20% -50%,
+      #5258cf,
+      transparent 50%
+    ),
+    radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%),
+    radial-gradient(
+      ellipse farthest-corner at 60% -20%,
+      #893dc2,
+      transparent 50%
+    ),
+    radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent),
+    linear-gradient(
+      #6559ca,
+      #bc318f 30%,
+      #e33f5f 50%,
+      #f77638 70%,
+      #fec66d 100%
+    );
+  color: #fff;
+}
+
+.fa-youtube {
+  background-color: #cd201f; /* YouTube rengi */
+  color: #fff;
+}
+
+.yaz {
+  height: 45px;
+  padding-top: 10px;
+  text-align: center;
+}

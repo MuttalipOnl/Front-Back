@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .header {
+        background-color: goldenrod;
+        color: white;
+        text-align: center;
+        padding: 30px;
+      }
+      .menu {
+        padding: 20px;
+        display: flex;
+        background-color: #333;
+        font-size: 18px;
+        gap: 20px;
+        text-align: center;
+      }
+
+      .menu-item a {
+        text-decoration: none;
+        color: white;
+        padding: 16px 20px;
+      }
+      .menu-item a:hover {
+        background-color: #bbb;
+        color: black;
+      }
+      .ph {
+        background-color: #aaa;
+        width: 100%;
+        padding: 20px;
+        margin-top: 10px;
+      }
+      main {
+        display: flex;
+      }
+      .sidebar {
+        background-color: #e5e5e5;
+        flex: 35%;
+        order: 1;
+        padding: 20px;
+      }
+      .content {
+        flex: 65%;
+        padding: 20px;
+      }
+      .box {
+        margin-bottom: 20px;
+      }
+      p {
+        margin: 10px 0;
+      }
+      footer {
+        margin-top: 15px;
+        background-color: goldenrod;
+        padding: 20px;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+      }
+      @media (max-width: 700px) {
+        main,
+        .menu {
+          flex-direction: column;
+        }
+        .sidebar {
+          order: -1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header">
+        <h1>Lorem, ipsum.</h1>
+        <h3>Lorem, ipsum dolor.</h3>
+      </div>
+      <nav class="menu">
+        <div class="menu-item"><a href="#">Link 1</a></div>
+        <div class="menu-item"><a href="#">Link 2</a></div>
+        <div class="menu-item"><a href="#">Link 3</a></div>
+        <div class="menu-item"><a href="#">Link 4</a></div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="sidebar">
+        <div class="box">
+          <h2>Lorem, ipsum.</h2>
+          <div class="ph" style="height: 200px"></div>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam
+            quae mollitia neque aut quo! Molestiae iure illum impedit sit
+            tempore labore repellat similique animi facilis.
+          </p>
+        </div>
+        <div class="ph" style="height: 50px"></div>
+        <div class="ph" style="height: 50px"></div>
+        <div class="ph" style="height: 50px"></div>
+      </div>
+      <div class="content">
+        <div class="box">
+          <h2>Lorem, ipsum.</h2>
+          <div class="ph" style="height: 200px"></div>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam
+            quae mollitia neque aut quo! Molestiae iure illum impedit sit
+            tempore labore repellat similique animi facilis.
+          </p>
+        </div>
+        <div class="box">
+          <h2>Lorem, ipsum.</h2>
+          <div class="ph" style="height: 200px"></div>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam
+            quae mollitia neque aut quo! Molestiae iure illum impedit sit
+            tempore labore repellat similique animi facilis.
+          </p>
+        </div>
+        <div class="box">
+          <h2>Lorem, ipsum.</h2>
+          <div class="ph" style="height: 200px"></div>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam
+            quae mollitia neque aut quo! Molestiae iure illum impedit sit
+            tempore labore repellat similique animi facilis.
+          </p>
+        </div>
+      </div>
+    </main>
+    <footer>Lorem, ipsum dolor.</footer>
+  </body>
+</html>

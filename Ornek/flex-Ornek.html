@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        background-color: #034f84;
+        display: flex;
+        height: 500px;
+
+        /* gap: 20px; */ /* Tüm elemanlar arasında yatay ve dikey boşluk bırakır */
+        /* row-gap: 20px; */ /* Sadece satırlar arasında boşluk bırakır */
+        /* column-gap: 20px; */ /* Sadece sütunlar arasında boşluk bırakır */
+
+        /* flex-direction: row; */ /* Elemanları yatayda sıralar (varsayılan) */
+        /* flex-direction: column; */ /* Elemanları dikeyde sıralar */
+        /* flex-direction: column-reverse; */ /* Elemanları dikeyde ters sıralar */
+        /* flex-direction: row-reverse; */ /* Elemanları yatayda ters sıralar */
+
+        /* flex-wrap: nowrap; */ /* Elemanlar tek satırda kalır (varsayılan) */
+        /* flex-wrap: wrap; */ /* Elemanlar birden fazla satıra taşabilir */
+        /* flex-wrap: wrap-reverse; */ /* Elemanlar birden fazla satıra ters yönde taşabilir */
+
+        /* flex-flow: row wrap; */ /* flex-direction ve flex-wrap birlikte kullanılır */
+
+        /* justify-content: center; */ /* Elemanları yatayda ortalar */
+        /* justify-content: space-around; */ /* Elemanlar arasında eşit boşluk bırakır */
+        /* justify-content: space-between; */ /* Elemanlar arasında boşluk bırakır, kenarlarda boşluk yok */
+        /* justify-content: space-evenly; */ /* Elemanlar arasında ve kenarlarda eşit boşluk bırakır */
+
+        /* align-items: center; */ /* Elemanları dikeyde ortalar */
+        /* align-items: stretch; */ /* Elemanlar container yüksekliğini kaplar (varsayılan) */
+        /* align-items: flex-start; */ /* Elemanları dikeyde yukarı hizalar */
+        /* align-items: flex-end; */ /* Elemanları dikeyde aşağı hizalar */
+
+        /* align-content: center; */ /* Çok satırlı içerikleri dikeyde ortalar */
+        /* align-content: flex-start; */ /* Çok satırlı içerikleri dikeyde yukarı hizalar */
+        /* align-content: flex-end; */ /* Çok satırlı içerikleri dikeyde aşağı hizalar */
+        /* align-content: space-around; */ /* Çok satırlı içerikleri dikeyde aralarında boşluk bırakarak hizalar */
+        /* align-content: space-between; */ /* Çok satırlı içerikleri dikeyde sağdan soldan boşluk bırakmadan aralarında boşluk bırakarak hizalar */
+        /* align-content: space-evenly; */ /* Çok satırlı içerikleri dikeyde eşit boşluklarla hizalar */
+      }
+      .item {
+        background-color: #f7786b;
+        padding: 30px;
+        margin: 20px;
+        color: white;
+        font-size: 25px;
+        /* flex: 0 0 200px; */ /* grow - shrink - basis*/
+        /* flex-grow: 1; */ /*kalan alanı orantısal olarak büyütür */
+      }
+
+      .item-1 {
+        /* order: -1; */ /*sıra belirtme */
+        /* align-self: flex-start; */
+        /* flex-grow: 2; */ /* ör %75 */
+      }
+      .item-2 {
+        /* order: 1; */ /*sıra belirtme */
+        /* align-self: center; */
+        /* flex-grow: 1; */ /* ör %25 */
+      }
+      .item-3 {
+        /* order: 2; */ /*sıra belirtme */
+        /* align-self: flex-end; */
+        /* flex-basis: 200px; */ /* başlangiç büyüklüğü*/
+        /*flex-shrink: 1 */ /* 1de 200px lin altına düşebilirsin. 0 da düşmez, sabit büyüklük*/
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item item-1">item 1</div>
+      <div class="item item-2">item 2</div>
+      <div class="item item-3">item 3</div>
+      <div class="item">item 4</div>
+      <div class="item">item 5</div>
+      <div class="item">item 6</div>
+      <div class="item">item 7</div>
+      <div class="item">item 8</div>
+    </div>
+  </body>
+</html>

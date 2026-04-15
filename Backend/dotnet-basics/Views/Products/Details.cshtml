@@ -1,0 +1,38 @@
+@model Product
+
+<div class="row border">
+    <div class="col-4">
+        <img src="~/img/@Model.urunResim" alt="" class="img-fluid" />
+    </div>
+    <div class="col-8 border-start p-3">
+        <h1>@Model.urunBaslik</h1>
+        <p>
+            @Model.urunAciklama
+        </p>
+        <p>
+            @Model.urunFiyat
+        </p>
+
+        @if (Model.urunSatistami)
+        {
+            @if (Model.StokAdeti > 0)
+            {
+                <p>
+                    Satışta
+                </p>
+            }
+            else
+            {
+                <p>Stok yeterli değil.</p>
+            }
+        }
+        else
+        {
+            <p>
+                Satışta değil
+            </p>
+        }
+
+
+    </div>
+</div>

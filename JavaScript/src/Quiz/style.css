@@ -1,0 +1,127 @@
+/* Genel Stiller */
+.app-container{
+    width: 500px;
+    height: 410.7px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#quiz-box #header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.option-list{
+    padding: 18px 10px;
+}
+.option-list .option{
+    border: 1px solid #151D3B;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.option-list .option:hover{
+    color: #112b2c;
+    background-color: #ececec; 
+}
+
+    .option-list .option.correct{
+        color: #155724;
+        background-color: #d4edda
+    }
+    .option-list .option.wrong{
+        color: #721c24;
+        background-color: #f8d7da;
+    }
+    .option-list .option.disabled{
+        pointer-events: none;
+        opacity: 0.6;
+    }
+
+.summary{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* score box */
+#score-box{
+    text-align: center;
+    padding: 30px;
+}
+#score-box i{
+    font-size: 90px;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+#score-box .score-text{
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+/* Button box */    
+#button-box{
+    text-align: center;
+    padding: 30px;
+}
+
+#button-box, #quiz-box, #score-box{
+    display: none;
+}
+
+#button-box.active, #quiz-box.active, #score-box.active{
+    display: block;
+}
+
+/* Kalan süre */
+
+.time{
+    display: flex;
+    align-items: center;
+    background-color: #155724;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 15px;
+    gap: 7px;
+}
+
+.time .time-text{
+    font-size: 14px;
+}
+.time .time-second{
+    background-color: #6a8870;
+    border-radius: 5px;
+    padding: 3px;
+    margin-left: 3px;
+    text-align:center;
+}
+
+.time-line{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: 4px;
+    background-color: #f0a500;
+}
+
+/* Butonlar */
+.btn-next {
+    display: none !important;
+}
+
+.btn-next.show {
+    display: block !important;
+}

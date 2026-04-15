@@ -1,0 +1,10 @@
+namespace dotnet_store.Models;
+
+//model
+public class KategoriGetModel
+{
+    public int Id { get; set; }
+    public string? KategoriAdi { get; set; }
+    public string? Url { get; set; }
+    public int UrunSayisi { get; set; }
+}

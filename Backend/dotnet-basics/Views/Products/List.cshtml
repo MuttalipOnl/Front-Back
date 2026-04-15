@@ -1,0 +1,15 @@
+@model List<Product>
+
+<div class="row">
+
+    @foreach (Product urun in Model)
+    {
+        @if (urun.urunSatistami)
+        {
+            <div class="col-md-3">
+                @await Html.PartialAsync("_ProductCard", urun)
+            </div>
+        }
+
+    }
+</div>
