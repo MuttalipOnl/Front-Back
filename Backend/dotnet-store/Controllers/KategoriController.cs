@@ -23,4 +23,25 @@ public class KategoriController:Controller
         }).ToList();
         return View(kategoriler);
     }
+
+    [HttpGet] // Boş form getiren Get metodu
+    public ActionResult Create()
+    {
+        return View();
+    }
+
+    [HttpPost] 
+    public ActionResult Create(KategoriCreateMdoel model)
+    {
+        var entity = new Kategori
+        {
+            KategoriAdi = model.KategoriAdi,
+            Url = model.Url
+        };
+
+        _context.Kategoriler.Add(entity);
+        _context.SaveChanges(); // Yaptığın değişiklikler veri tabanına aktarılıyor.
+
+        return RedirectToAction("Index");
+    }
 }
