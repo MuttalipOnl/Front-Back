@@ -12,6 +12,7 @@ public class KategoriController:Controller
     {
         _context = context;
     }
+
     public ActionResult Index()
     {
         var kategoriler = _context.Kategoriler.Select(i => new KategoriGetModel
@@ -43,5 +44,39 @@ public class KategoriController:Controller
         _context.SaveChanges(); // Yaptığın değişiklikler veri tabanına aktarılıyor.
 
         return RedirectToAction("Index");
+    }
+
+    public ActionResult Edit(int id)
+    {
+        var entity = _context.Kategoriler.Select(i => new KategoriEditMdoel
+        {
+            Id = i.Id,
+            KategoriAdi = i.KategoriAdi,
+            Url = i.Url
+        }).FirstOrDefault(i => i.Id == id);
+        return View(entity);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(int id, KategoriEditMdoel model)
+    {
+        if(id != model.Id)
+        {
+            return RedirectToAction("Index");
+        }
+        var entity = _context.Kategoriler.FirstOrDefault(i => i.Id == model.Id);
+        if(entity != null)
+        {
+            entity.KategoriAdi = model.KategoriAdi;
+            entity.Url = model.Url;
+            _context.SaveChanges();
+
+            TempData["Mesaj"] = $"{entity.KategoriAdi} kategorisi güncellendi";
+
+            return RedirectToAction("Index");
+        }
+
+
+        return View();
     }
 }

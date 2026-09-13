@@ -1,5 +1,7 @@
+using System.Threading.Tasks;
 using dotnet_store.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace dotnet_store.Controllers;
@@ -64,12 +66,21 @@ public class UrunController : Controller
     [HttpGet]
     public ActionResult Create()
     {
+        // ViewData["Kategoriler"] = _context.Kategoriler.ToList();
+        // ViewBag.Kategoriler = _context.Kategoriler.ToList();
+        ViewBag.Kategoriler = new SelectList(_context.Kategoriler.ToList(), "Id", "KategoriAdi");
         return View();
     }
 
     [HttpPost]
-    public ActionResult Create(UrunCreatModel model)
+    public async Task<ActionResult> Create(UrunCreatModel model)
     {
+        var filename = Path.GetRandomFileName() + ".jpg";
+        var path = Path.Combine(Directory.GetCurrentDirectory(), "wwroot/img", filename);
+        using (var stream = new FileStream(path, FileMode.Create))
+        {
+            await model.Resim!.CopyToAsync(stream);
+        }
         var entity = new Urun()
         {
             UrunAdi = model.UrunAdi,
@@ -78,7 +89,7 @@ public class UrunController : Controller
             Aktif = model.Aktif,
             Anasayfa = model.Anasayfa,
             KategoriId = model.KategoriId,
-            Resim = "1.jpeg"
+            Resim = filename
         };
 
         _context.Urunler.Add(entity);
@@ -86,5 +97,52 @@ public class UrunController : Controller
         return RedirectToAction("Index");
     }
 
+    public ActionResult Edit(int id)
+    {
+        var entity = _context.Urunler.Select(i => new UrunEditModel
+        {
+            Id = i.Id,
+            UrunAdi = i.UrunAdi,
+            Acıklama = i.Acıklama,
+            Aktif = i.Aktif,
+            Anasayfa = i.Anasayfa,
+            Fiyat = i.Fiyat,
+            KategoriId = i.KategoriId,
+            Resim = i.Resim
+        }).FirstOrDefault(i => i.Id == id);
+        ViewBag.Kategoriler = new SelectList(_context.Kategoriler.ToList(), "Id", "KategoriAdi");
+            return View(entity);
+        
+    }
+
+    [HttpPost]
+    public ActionResult Edit(int id, UrunEditModel model)
+    {
+        if(id != model.Id)
+        {
+            return RedirectToAction("Index");
+        }
+
+        var entity = _context.Urunler.FirstOrDefault(i => i.Id == model.Id);
+        if(entity != null)
+        {
+            entity.UrunAdi = model.UrunAdi;
+            entity.Acıklama = model.Acıklama;
+            entity.Fiyat = model.Fiyat;
+            entity.Resim = model.Resim;
+            entity.Aktif = model.Aktif;
+            entity.Anasayfa = model.Anasayfa;
+            entity.KategoriId = model.KategoriId;
+
+            _context.SaveChanges();
+
+            TempData["Mesaj"] = $"{entity.UrunAdi} ürünü güncellendi";
+            
+            return RedirectToAction("Index");
+
+        }
+
+        return View(model);
+    }
 
 }
