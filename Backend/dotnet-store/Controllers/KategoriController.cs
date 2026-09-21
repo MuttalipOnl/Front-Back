@@ -34,16 +34,21 @@ public class KategoriController:Controller
     [HttpPost] 
     public ActionResult Create(KategoriCreateMdoel model)
     {
-        var entity = new Kategori
+        if (ModelState.IsValid)
         {
-            KategoriAdi = model.KategoriAdi,
-            Url = model.Url
-        };
+            var entity = new Kategori
+            {
+                KategoriAdi = model.KategoriAdi,
+                Url = model.Url
+            };
 
-        _context.Kategoriler.Add(entity);
-        _context.SaveChanges(); // Yaptığın değişiklikler veri tabanına aktarılıyor.
+            _context.Kategoriler.Add(entity);
+            _context.SaveChanges(); // Yaptığın değişiklikler veri tabanına aktarılıyor.
 
-        return RedirectToAction("Index");
+            return RedirectToAction("Index");
+         }
+
+         return View();
     }
 
     public ActionResult Edit(int id)
@@ -64,6 +69,11 @@ public class KategoriController:Controller
         {
             return RedirectToAction("Index");
         }
+
+        if (ModelState.IsValid)
+        {
+            
+        
         var entity = _context.Kategoriler.FirstOrDefault(i => i.Id == model.Id);
         if(entity != null)
         {
@@ -75,8 +85,47 @@ public class KategoriController:Controller
 
             return RedirectToAction("Index");
         }
-
-
+        }
+        
         return View();
     }
+
+    public ActionResult Delete(int? id)
+    {
+        if(id == null)
+        {
+            return RedirectToAction("Index");
+        }
+        var entity = _context.Kategoriler.FirstOrDefault(i => i.Id == id);
+
+        if (entity != null)
+        {
+           return View(entity);
+
+            
+        }
+        return RedirectToAction("Index");
+    }
+
+    [HttpPost]
+    public ActionResult DeleteConfirm(int? id)
+    {
+        if(id == null)
+        {
+            return RedirectToAction("Index");
+        }
+        var entity = _context.Kategoriler.FirstOrDefault(i => i.Id == id);
+
+        if (entity != null)
+        {
+            _context.Kategoriler.Remove(entity);
+            _context.SaveChanges();
+
+            TempData["Mesaj"] = $"{entity.KategoriAdi} kategorisi silindi";
+
+            
+        }
+        return RedirectToAction("Index");
+    }
+    
 }

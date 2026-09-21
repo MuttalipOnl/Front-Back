@@ -20,9 +20,9 @@ public class DataContext : DbContext
         modelBuilder.Entity<Slider>().HasData(
             new List<Slider>
             {
-                new Slider{Id=1, Baslik="Slider 1 Başlık", Acıklama="Slider 1 Açıklama", Resim="slider-1.jpeg", Aktif=true, Index=0},
-                new Slider{Id=2, Baslik="Slider 2 Başlık", Acıklama="Slider 2 Açıklama", Resim="slider-2.jpeg", Aktif=true, Index=1},
-                new Slider{Id=3, Baslik="Slider 3 Başlık", Acıklama="Slider 3 Açıklama", Resim="slider-3.jpeg", Aktif=true, Index=2},
+                new Slider{Id=1, Baslik="Slider 1 Başlık", Aciklama="Slider 1 Açıklama", Resim="slider-1.jpeg", Aktif=true, Index=0},
+                new Slider{Id=2, Baslik="Slider 2 Başlık", Aciklama="Slider 2 Açıklama", Resim="slider-2.jpeg", Aktif=true, Index=1},
+                new Slider{Id=3, Baslik="Slider 3 Başlık", Aciklama="Slider 3 Açıklama", Resim="slider-3.jpeg", Aktif=true, Index=2},
             }
         );
 

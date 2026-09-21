@@ -1,11 +1,10 @@
 namespace dotnet_store.Models;
 
-public class Slider
+//model
+public class SliderGetModel
 {
-
     public int Id { get; set; }
     public string? Baslik { get; set; }
-    public string? Aciklama { get; set; }
     public string? Resim { get; set; }
     public int Index { get; set; }
     public bool Aktif { get; set; }

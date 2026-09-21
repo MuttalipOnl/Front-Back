@@ -28,7 +28,8 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapStaticAssets();
+// app.MapStaticAssets();
+app.UseStaticFiles();
 
 app.MapControllerRoute(
     name: "urunler_by_kategori",
